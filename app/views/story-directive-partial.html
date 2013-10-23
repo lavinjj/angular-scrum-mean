@@ -1,0 +1,28 @@
+<div ng-controller="TaskCtrl">
+    <span class="story-title">{{title}}</span>
+    <span class="task-progress-status pull-right">{{doneTasks.length}} / {{tasks.length}} tasks completed</span>
+    <br/>
+    <div class="form-horizontal" ng-show="$parent.$parent.editMode">
+        <div class="input-append">
+            <form ng-submit="addTask();">
+                <input class="span3" ng-model="taskTitle" size="16" type="text" placeholder="Format: {Title}">
+                <input class="span3" ng-model="taskPoints" size="16" type="number" placeholder="Format: {Points}">
+                <input class="span3" ng-model="taskAssignedTo" size="16" type="text" placeholder="Format: {Assigned To}">
+                <input class="span3" ng-model="taskOrder" size="16" type="number" placeholder="Format: {Order}">
+                <button class="btn btn-success" type="button" ng-disabled="!taskTitle" ng-click="addTask();">Add Task</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2"><task-status status="statuses.todo" tasks="todoTasks" title="titles.todo"></task-status></div>
+            <div class="span2"><task-status status="statuses.inProgress" tasks="inProgressTasks" title="titles.inProgress"></task-status></div>
+            <div class="span1"><task-status status="statuses.impeded" tasks="impededTasks" title="titles.impeded"></task-status></div>
+            <div class="span2"><task-status status="statuses.testing" tasks="testingTasks" title="titles.testing"></task-status></div>
+            <div class="span1"><task-status status="statuses.codeReview" tasks="codeReviewTasks" title="titles.codeReview"></task-status></div>
+            <div class="span1"><task-status status="statuses.signOff" tasks="signOffTasks" title="titles.signOff"></task-status></div>
+            <div class="span2"><task-status status="statuses.deployment" tasks="deploymentTasks" title="titles.deployment"></task-status></div>
+            <div class="span1"><task-status status="statuses.done" tasks="doneTasks" title="titles.done"></task-status></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div>
+    <div class="page-header">
+        <h1>orderTalk Project Status <a ng-click="switchEditMode()"><i class="icon icon-edit"></i></a> <a ng-click="saveAll()"><i class="icon icon-file"></i></a></h1>
+    </div>
+    <div class="form-horizontal" ng-show="editMode">
+        <div class="input-append">
+            <form ng-submit="addClient();">
+                <input class="span3" ng-model="clientCreationString" size="16" type="text" placeholder="Format: {Client Name}">
+                <button class="btn btn-success" type="button" ng-disabled="!clientCreationString" ng-click="addClient();">Add Client</button>
+            </form>
+        </div>
+    </div>
+    <div ng-Repeat="client in clients | orderBy:ClientName">
+        <h2>{{client.ClientName}}</h2>
+        <div class="form-horizontal" ng-show="editMode">
+            <div class="input-append">
+                <form ng-submit="addProject(client._id);">
+                    <input class="span3" ng-model="$parent.projectCreationString" size="16" type="text" placeholder="Format: {Project Name}">
+                    <button class="btn btn-success" type="button" ng-disabled="!$parent.projectCreationString" ng-click="addProject(client._id);">Add Project</button>
+                </form>
+            </div>
+        </div>
+        <div ng-repeat="project in client.Projects | orderBy:ProjectName">
+            <h3>{{project.ProjectName}} <a ng-click="showTasks(project)"><i class="icon icon-tasks"></i></a> <a ng-click="deleteProject(client._id, $index)" ng-show="editMode"><i class="icon icon-trash"></i></a></h3>
+            <div class="form-horizontal" ng-show="editMode">
+                <div class="input-append">
+                    <form ng-submit="addStory(client._id, $index);">
+                        <input class="span3" ng-model="$parent.$parent.storyCreationString" size="16" type="text" placeholder="Format: {Story Name}">
+                        <button class="btn btn-success" type="button" ng-disabled="!$parent.$parent.storyCreationString" ng-click="addStory(client._id, $index);">Add Story</button>
+                    </form>
+                </div>
+            </div>
+            <div collapse="project.showTasks">
+                <div ng-repeat="story in project.Stories">
+                    <story id="story._id" title="story.Title" tasks="story.Tasks"></story>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

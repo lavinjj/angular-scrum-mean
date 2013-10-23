@@ -1,0 +1,65 @@
+<form name="taskForm" method="post" class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="taskName">Task Title </label>
+
+            <div class="controls">
+                <input class="input-large" id="taskName" name="taskName" type="text"
+                       ng-model="task.Title"
+                       required>
+
+                <div ng-show="addEvent.taskName.$error.required && addEvent.$dirty">
+                    <p><i class="icon icon-warning-sign"></i>Please enter an task title</p>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="taskPoints">Points </label>
+
+            <div class="controls">
+                <input class="input-large" id="taskPoints" name="taskPoints" type="number"
+                       ng-model="task.Points">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="taskAssignment">Assigned To </label>
+
+            <div class="controls">
+                <input class="input-large" id="taskAssignment" name="taskAssignment" type="text"
+                       ng-model="task.AssignedTo">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="taskOrder">Order </label>
+
+            <div class="controls">
+                <input class="input-large" id="taskOrder" name="taskOrder" type="text"
+                       ng-model="task.Order">
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="taskStatus">Status </label>
+
+            <div class="controls">
+                <select class="input-large" id="taskStatus" name="taskStatus" ng-model="task.Status">
+                    <option value="todo">todo</option>
+                    <option value="inProgress">in-progress</option>
+                    <option value="impeded">impeded</option>
+                    <option value="testing">testing</option>
+                    <option value="codeReview">code-review</option>
+                    <option value="signOff">sign-off</option>
+                    <option value="deployment">deployment</option>
+                    <option value="done">done</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a name="saveBtn" ng-click="save()" ng-disabled="taskForm.$invalid" class="btn btn-large btn-primary">Save</a>
+                <a href="#/" name="cancelBtn" class="btn btn-large btn-danger">Cancel</a>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,40 @@
+<form name="clientForm" method="post" class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="clientName">Client Name </label>
+
+            <div class="controls">
+                <input class="input-large" id="clientName" name="clientName" type="text"
+                       ng-model="client.ClientName"
+                       required>
+
+                <div ng-show="addEvent.clientName.$error.required && addEvent.$dirty">
+                    <p><i class="icon icon-warning-sign"></i>Please enter an client name</p>
+                </div>
+            </div>
+        </div>
+        <div class="control-group" ng-show="isEdit">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Projects</th>
+                    <th>Stories</th>
+                    <th><a href="#/add-project/{{client._id}}"><i class="icon-plus-sign" ></i></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="project in client.Projects">
+                    <td>{{project.ProjectName}}</td>
+                    <td>{{project.Stories.length}}</td>
+                    <td><a href="#/edit-project/{{client._id}}/{{project._id}}"><i class="icon-edit"></i></a> <a href="#/delete-project/{{client._id}}/{{project._id}}"><i class="icon-remove"></i></a></td>
+                </tr>
+                </tbody>
+            </table>        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a name="saveBtn" ng-click="save()" ng-disabled="clientForm.$invalid" class="btn btn-large btn-primary" >Save</a>
+                <a href="#/" name="cancelBtn" class="btn btn-large btn-danger">Cancel</a>
+            </div>
+        </div>
+    </fieldset>
+</form>

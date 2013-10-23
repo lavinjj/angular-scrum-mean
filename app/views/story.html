@@ -1,0 +1,40 @@
+<form name="storyForm" method="post" class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="storyName">Story Name </label>
+
+            <div class="controls">
+                <input class="input-large" id="storyName" name="storyName" type="text"
+                       ng-model="story.Title"
+                       required>
+
+                <div ng-show="addEvent.storyName.$error.required && addEvent.$dirty">
+                    <p><i class="icon icon-warning-sign"></i>Please enter an story title</p>
+                </div>
+            </div>
+        </div>
+        <div class="control-group" ng-show="isEdit">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Tasks</th>
+                    <th>Status</th>
+                    <th><a href="#/add-task/{{client._id}}/{{project._id}}/{{story._id}}"><i class="icon-plus-sign" ></i></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="task in story.Tasks">
+                    <td>{{task.Title}}</td>
+                    <td>{{task.Status}}</td>
+                    <td><a href="#/edit-task/{{client._id}}/{{project._id}}/{{story._id}}/{{task._id}}"><i class="icon-edit"></i></a> <a href="#/delete-task/{{client._id}}/{{project._id}}/{{story._id}}/{{task._id}}"><i class="icon-remove"></i></a></td>
+                </tr>
+                </tbody>
+            </table>        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a name="saveBtn" ng-click="save()" ng-disabled="storyForm.$invalid" class="btn btn-large btn-primary" >Save</a>
+                <a href="#/" name="cancelBtn" class="btn btn-large btn-danger">Cancel</a>
+            </div>
+        </div>
+    </fieldset>
+</form>

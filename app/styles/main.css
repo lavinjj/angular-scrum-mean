@@ -1,0 +1,103 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+}
+
+input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+}
+
+.page-header {
+    border-bottom: none;
+}
+.form-actions {
+    background-color: gray;
+    border-top: none;
+}
+.recently-dropped {
+    border: 4px yellow solid;
+}
+.ui-state-highlight {
+    border: 1px black solid;
+    background-color: black;
+}
+ul.thumbnails {
+    list-style-type: none;
+    margin-left: 0px;
+    min-height: 110px;
+    min-width: 130px;
+    margin: 0px;
+}
+ul.thumbnails > li {
+    width: 100%;
+    margin: 0px;
+}
+.thumbnail {
+    border: 1px solid black;
+    display: block;
+}
+.thumbnail.todo {
+    background-color: bisque;
+}
+.thumbnail.in-progress {
+    background-color: darkkhaki;
+}
+.thumbnail.impeded {
+    background-color: crimson;
+}
+.thumbnail.done {
+    background-color: lightgreen;
+}
+.thumbnail p {
+    margin-bottom: 0px;
+}
+.thumbnail p > span {
+    font-weight: bold;
+}
+.thumbnail p > span:first-child {
+    float: left;
+}
+.thumbnail p > span:last-child:not(:first-child) {
+    float: right;
+}
+.thumbnail hr {
+    border-color: black;
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+.task-progress-status {
+    background-color: lightgreen;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.story-title {
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.story > div {
+    border: 1px black solid;
+    padding-bottom: 30px;
+}

@@ -1,0 +1,40 @@
+<form name="projectForm" method="post" class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="projectName">Project Name </label>
+
+            <div class="controls">
+                <input class="input-large" id="projectName" name="projectName" type="text"
+                       ng-model="project.ProjectName"
+                       required>
+
+                <div ng-show="addEvent.projectName.$error.required && addEvent.$dirty">
+                    <p><i class="icon icon-warning-sign"></i>Please enter an project name</p>
+                </div>
+            </div>
+        </div>
+        <div class="control-group" ng-show="isEdit">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Stories</th>
+                    <th>Tasks</th>
+                    <th><a href="#/add-story/{{client._id}}/{{project._id}}"><i class="icon-plus-sign" ></i></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="story in project.Stories">
+                    <td>{{story.Title}}</td>
+                    <td>{{story.Tasks.length}}</td>
+                    <td><a href="#/edit-story/{{client._id}}/{{project._id}}/{{story._id}}"><i class="icon-edit"></i></a> <a href="#/delete-story/{{client._id}}/{{project._id}}/{{story._id}}"><i class="icon-remove"></i></a></td>
+                </tr>
+                </tbody>
+            </table>        </div>
+        <div class="control-group">
+            <div class="controls">
+                <a name="saveBtn" ng-click="save()" ng-disabled="projectForm.$invalid" class="btn btn-large btn-primary" >Save</a>
+                <a href="#/" name="cancelBtn" class="btn btn-large btn-danger">Cancel</a>
+            </div>
+        </div>
+    </fieldset>
+</form>

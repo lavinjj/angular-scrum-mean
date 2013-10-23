@@ -1,0 +1,16 @@
+<h4>{{title}}</h4>
+<ul class="thumbnails">
+    <li><i class="icon icon-tasks"></i></li>
+    <li ng-repeat="task in tasks">
+        <task class="thumbnail {{task.Status}}" task="task" id="{{task._id}}">
+            <div class="row-fluid">
+                <p class="span11"><span>{{task.Title}}</span></p>
+                <button class="btn btn-large close pull-right" ng-click="deleteTask(task._id)">&times;</button>
+            </div>
+            <hr/>
+            <div class="row-fluid">
+                <p><span class="span1">{{task.Points}}</span><em class="pull-right"><strong>{{task.AssignedTo}}</strong></em></p>
+            </div>
+        </task>
+    </li>
+</ul>
