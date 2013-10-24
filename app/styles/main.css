@@ -96,8 +96,15 @@ ul.thumbnails > li {
     padding-left: 20px;
     font-size: 18px;
     font-weight: bold;
+    color: #049cdb;
 }
 .story > div {
     border: 1px black solid;
     padding-bottom: 30px;
+}
+.client {
+    color: black;
+}
+.project {
+    color: blue;
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('devStatusApp')
-  .controller('MainCtrl', function ($scope, $location, ScrumData) {
+  .controller('MainCtrl', function ($scope, $location, ScrumData, Notification) {
         $scope.clientCreationString = '';
         $scope.projectCreationString = '';
         $scope.storyCreationString = '';
@@ -64,4 +64,49 @@ angular.module('devStatusApp')
             $scope.editMode = !$scope.editMode;
         };
 
-  });
+        $scope.onEditTaskHandler = function(id){
+            var currentClientId = '';
+            var currentProjectId = '';
+            var currentStoryId = '';
+            angular.forEach($scope.clients, function(client){
+                currentClientId = client._id;
+                angular.forEach(client.Projects, function(project){
+                    currentProjectId = project._id;
+                    angular.forEach(project.Stories, function(story){
+                        currentStoryId = story._id;
+                        angular.forEach(story.Tasks, function(task){
+                            if (task._id === id){
+                                $location.path('/edit-task/'+ currentClientId + '/' + currentProjectId + '/' + currentStoryId + '/' + id);
+                            }
+                        })
+                    })
+                })
+            })
+        };
+
+        Notification.onEditTask($scope, $scope.onEditTaskHandler);
+
+        $scope.onDeleteTaskHandler = function(id){
+            var currentClientId = '';
+            var currentProjectId = '';
+            var currentStoryId = '';
+            angular.forEach($scope.clients, function(client){
+                currentClientId = client._id;
+                angular.forEach(client.Projects, function(project){
+                    currentProjectId = project._id;
+                    angular.forEach(project.Stories, function(story){
+                        currentStoryId = story._id;
+                        angular.forEach(story.Tasks, function(task){
+                            if (task._id === id){
+                                $location.path('/delete-task/'+ currentClientId + '/' + currentProjectId + '/' + currentStoryId + '/' + id);
+                            }
+                        })
+                    })
+                })
+            })
+        };
+
+        Notification.onDeleteTask($scope, $scope.onDeleteTaskHandler);
+
+
+    });

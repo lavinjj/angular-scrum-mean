@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('devStatusApp')
-  .controller('TaskDeleteCtrl', function ($scope, $routeParams, $location, ScrumData) {
+    .controller('TaskDeleteCtrl', function ($scope, $routeParams, $location, ScrumData) {
         $scope.client = null;
         $scope.project = null;
         $scope.story = null;
@@ -21,13 +21,13 @@ angular.module('devStatusApp')
                         for (var y = 0; y < $scope.project.Stories.length; y++) {
                             if ($scope.project.Stories[y]._id === $routeParams.story) {
                                 $scope.story = $scope.project.Stories[y];
-                                for(var z = 0; z < $scope.story.Tasks.length; z++){
-                                    if($scope.story.Tasks[z]._id === $routeParams.task){
+                                for (var z = 0; z < $scope.story.Tasks.length; z++) {
+                                    if ($scope.story.Tasks[z]._id === $routeParams.task) {
                                         start = z;
                                     }
                                 }
-                                if(start >= 0){
-                                    $scope.story.Tasks.splice(z, 1);
+                                if (start >= 0) {
+                                    $scope.story.Tasks.splice(start, 1);
                                     $scope.client.$update(function () {
                                         $location.path('/');
                                     })

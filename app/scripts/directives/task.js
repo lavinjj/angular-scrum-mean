@@ -41,4 +41,21 @@ angular.module('devStatusApp')
                 });
             }
         };
+    })
+    .directive('task', function (Notification) {
+        return {
+            restrict: 'E',
+            scope: {
+                task: '='
+            },
+            link:function (scope, element, attrs) {
+                scope.storyId = scope.$parent.storyId;
+                scope.deleteTask = function(taskId) {
+                    Notification.deleteTask(taskId);
+                };
+                scope.editTask = function(taskId) {
+                    Notification.editTask(taskId);
+                };
+            }
+        };
     });

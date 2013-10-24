@@ -4,9 +4,9 @@
             <label class="control-label" for="taskName">Task Title </label>
 
             <div class="controls">
-                <input class="input-large" id="taskName" name="taskName" type="text"
+                <textarea rows="3" class="input-large" id="taskName" name="taskName" type="text"
                        ng-model="task.Title"
-                       required>
+                       required></textarea>
 
                 <div ng-show="addEvent.taskName.$error.required && addEvent.$dirty">
                     <p><i class="icon icon-warning-sign"></i>Please enter an task title</p>

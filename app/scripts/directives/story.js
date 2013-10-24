@@ -7,7 +7,8 @@ angular.module('devStatusApp')
             scope: {
                 storyId: '=id',
                 tasks: '=',
-                title: '='
+                title: '=',
+                projectId: '=project'
             },
             templateUrl: 'views/story-directive-partial.html',
             link: function (scope, element, attrs) {

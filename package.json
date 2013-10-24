@@ -1,5 +1,5 @@
 {
-  "name": "express-test",
+  "name": "dev-status",
   "version": "0.0.0",
   "dependencies": {
     "express": "~3.4.0",

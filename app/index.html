@@ -32,7 +32,12 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div ng-view=""></div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="brand" href="#">orderTalk Project Status</a>
+    </div>
+</div>
+<div class="container-fluid" ng-view=""></div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -100,6 +105,7 @@
 <script src="scripts/directives/story.js"></script>
 <script src="scripts/directives/task.js"></script>
 <script src="scripts/controllers/task.js"></script>
+<script src="scripts/services/notification.js"></script>
 <!-- endbuild -->
 </body>
 </html>
