@@ -13,7 +13,8 @@ var ScrumSchema = new Schema({
                 Points: Number,
                 AssignedTo: String,
                 Order: Number,
-                Status: {type: String, required: true}
+                Status: {type: String, required: true},
+                Notes: String
             }]
         }]
     }]

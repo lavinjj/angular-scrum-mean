@@ -56,6 +56,15 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label" for="taskNotes">Task Title </label>
+
+            <div class="controls">
+                <textarea rows="6" class="input-large" id="taskNotes" name="taskNotes" type="text"
+                          ng-model="task.Notes"
+                          required></textarea>
+            </div>
+        </div>
+        <div class="control-group">
             <div class="controls">
                 <a name="saveBtn" ng-click="save()" ng-disabled="taskForm.$invalid" class="btn btn-large btn-primary">Save</a>
                 <a href="#/" name="cancelBtn" class="btn btn-large btn-danger">Cancel</a>
