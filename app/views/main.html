@@ -1,17 +1,62 @@
 <div>
-    <div class="page-header pull-right">
-        <a class="btn" href="#/add-client"><span tooltip="Add Client"><i class="icon icon-plus-sign"></i></span></a> <a class="btn" ng-click="saveAll()"><span tooltip="Save All"><i class="icon icon-file"></i></span></a>
+    <div class="page-header">
+        <h2>Current Development
+            <div class="pull-right">
+                <a class="btn" href="#/add-client"><span tooltip="Add Client"><i class="icon icon-plus-sign"></i></span></a>
+                <a class="btn" ng-click="saveAll()"><span tooltip="Save All"><i class="icon icon-file"></i></span></a>
+            </div>
+        </h2>
+
     </div>
-    <div ng-Repeat="client in clients | orderBy:'ClientName'">
-        <h2 class="client">{{client.ClientName}} <a class="btn" href="#/edit-client/{{client._id}}"><span tooltip="Edit Client"><i class="icon icon-edit"></i></span></a> <a class="btn" href="#/add-project/{{client._id}}"><span tooltip="Add Project"><i class="icon icon-plus-sign"></i></span></a></h2>
+    <div ng-Repeat="client in activeClients | orderBy:'ClientName'">
+        <h2 class="client">{{client.ClientName}} <a class="btn" href="#/edit-client/{{client._id}}"><span
+                tooltip="Edit Client"><i class="icon icon-edit"></i></span></a> <a class="btn"
+                                                                                   href="#/add-project/{{client._id}}"><span
+                tooltip="Add Project"><i class="icon icon-plus-sign"></i></span></a></h2>
+
         <div ng-repeat="project in client.Projects | orderBy:ProjectName">
-            <h3 class="project">{{project.ProjectName}} <a class="btn" ng-click="showTasks(project)"><i class="icon icon-tasks"></i></a> <a class="btn" href="#/edit-project/{{client._id}}/{{project._id}}"><span tooltip="Edit Project"><i class="icon icon-edit"></i></span></a> <a class="btn" href="#/add-story/{{client._id}}/{{project._id}}"><span tooltip="Add Story"><i class="icon icon-plus-sign"></i></span></a> <a class="btn" ng-click="deleteProject(client._id, $index)"><span tooltip="Delete Project"><i class="icon icon-trash"></i></span></a></h3>
+            <h3 class="project">{{project.ProjectName}} <a class="btn" ng-click="showTasks(project)"><i
+                    class="icon icon-tasks"></i></a> <a class="btn"
+                                                        href="#/edit-project/{{client._id}}/{{project._id}}"><span
+                    tooltip="Edit Project"><i class="icon icon-edit"></i></span></a> <a class="btn"
+                                                                                        href="#/add-story/{{client._id}}/{{project._id}}"><span
+                    tooltip="Add Story"><i class="icon icon-plus-sign"></i></span></a> <a class="btn"
+                                                                                          ng-click="deleteProject(client._id, $index)"><span
+                    tooltip="Delete Project"><i class="icon icon-trash"></i></span></a></h3>
+
             <div collapse="project.showTasks">
                 <div ng-repeat="story in project.Stories">
                     <story id="story._id" title="story.Title" tasks="story.Tasks" project="project._id"></story>
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
+    </div>
+    <hr/>
+    <h2>No Current Development</h2>
+    <hr/>
+    <div ng-Repeat="client in inactiveClients | orderBy:'ClientName'">
+        <h2 class="client">{{client.ClientName}} <a class="btn" href="#/edit-client/{{client._id}}"><span
+                tooltip="Edit Client"><i class="icon icon-edit"></i></span></a> <a class="btn"
+                                                                                   href="#/add-project/{{client._id}}"><span
+                tooltip="Add Project"><i class="icon icon-plus-sign"></i></span></a></h2>
+
+        <div ng-repeat="project in client.Projects | orderBy:ProjectName">
+            <h3 class="project">{{project.ProjectName}} <a class="btn" ng-click="showTasks(project)"><i
+                    class="icon icon-tasks"></i></a> <a class="btn"
+                                                        href="#/edit-project/{{client._id}}/{{project._id}}"><span
+                    tooltip="Edit Project"><i class="icon icon-edit"></i></span></a> <a class="btn"
+                                                                                        href="#/add-story/{{client._id}}/{{project._id}}"><span
+                    tooltip="Add Story"><i class="icon icon-plus-sign"></i></span></a> <a class="btn"
+                                                                                          ng-click="deleteProject(client._id, $index)"><span
+                    tooltip="Delete Project"><i class="icon icon-trash"></i></span></a></h3>
+
+            <div collapse="project.showTasks">
+                <div ng-repeat="story in project.Stories">
+                    <story id="story._id" title="story.Title" tasks="story.Tasks" project="project._id"></story>
+                </div>
+            </div>
+        </div>
+        <hr/>
     </div>
 </div>

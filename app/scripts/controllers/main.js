@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('devStatusApp')
-  .controller('MainCtrl', function ($scope, $location, ScrumData, Notification) {
+  .controller('MainCtrl', function ($scope, $location, $filter, ScrumData, Notification) {
         $scope.clientCreationString = '';
         $scope.projectCreationString = '';
         $scope.storyCreationString = '';
-        $scope.clients = ScrumData.query();
+        $scope.activeClients = [];
+        $scope.inactiveClients = [];
+        $scope.clients = [];
         $scope.editMode = false;
 
         $scope.addClient = function(){
@@ -52,7 +54,9 @@ angular.module('devStatusApp')
 
         $scope.saveAll = function(){
             angular.forEach($scope.clients, function(client){
-                client.$update();
+                client.$update(function(){
+                    $scope.init();
+                });
             })
         }
 
@@ -108,5 +112,28 @@ angular.module('devStatusApp')
 
         Notification.onDeleteTask($scope, $scope.onDeleteTaskHandler);
 
+        $scope.filterClients = function() {
+            function filterActiveClients(clients) {
+                return $filter('filter')(clients, function(client) {
+                    var matchesFilter = client.Projects.length > 0;
+                    return matchesFilter;
+                });
+            }
+            function filterInactiveClients(clients) {
+                return $filter('filter')(clients, function(client) {
+                    var matchesFilter = client.Projects.length < 1;
+                    return matchesFilter;
+                });
+            }
+            $scope.activeClients = filterActiveClients($scope.clients);
+            $scope.inactiveClients = filterInactiveClients($scope.clients);
+        };
 
+        $scope.init = function(){
+            $scope.clients = ScrumData.query(function(){
+                $scope.filterClients();
+            });
+        };
+
+        $scope.init();
     });
