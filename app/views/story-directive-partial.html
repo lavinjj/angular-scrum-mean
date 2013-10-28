@@ -1,5 +1,5 @@
 <div ng-controller="TaskCtrl">
-    <span class="story-title">{{title}} <a class="btn" href="#/edit-story/{{$parent.$parent.client._id}}/{{projectId}}/{{storyId}}"><i class="icon icon-edit"></i></a> <a class="btn" href="#/delete-story/{{$parent.$parent.client._id}}/{{projectId}}/{{storyId}}"><i class="icon icon-trash"></i></a></span>
+    <span class="story-title">{{title}} <a class="btn" href="#/edit-story/{{$parent.$parent.client._id}}/{{projectId}}/{{storyId}}"><span tooltip="Edit Story" tooltip-placement="bottom"><i class="icon icon-edit"></i></span></a> <a class="btn" href="#/delete-story/{{$parent.$parent.client._id}}/{{projectId}}/{{storyId}}"><span tooltip="Delete Story" tooltip-placement="bottom"><i class="icon icon-trash"></i></span></a></span>
     <span class="task-progress-status pull-right">{{doneTasks.length}} / {{tasks.length}} tasks completed</span>
     <br/>
     <div class="container-fluid">

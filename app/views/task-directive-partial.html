@@ -4,9 +4,11 @@
     <li ng-repeat="task in tasks">
         <task class="thumbnail {{task.Status}}" task="task" id="{{task._id}}">
             <div class="row-fluid">
-                <p class="span11"><span>{{task.Title}}</span></p>
-                <button class="btn btn-large close pull-right" ng-click="deleteTask(task._id)"><i class="icon icon-trash"></i></button>
-                <button class="btn btn-large close pull-right" ng-click="editTask(task._id)"><i class="icon icon-edit"></i></button>
+                <div><span ng-show="task.TicketNumber"></span><a href="https://support.ordertalk.net/support/staff/index.php?/Tickets/Ticket/View/{{task.TicketNumber}}" target="_blank">{{task.TicketNumber}}</a></span>
+                    <button class="btn btn-large close pull-right" ng-click="deleteTask(task._id)"><span tooltip="Delete Task"><i class="icon icon-trash"></i></span></button>
+                    <button class="btn btn-large close pull-right" ng-click="editTask(task._id)"><span tooltip="Edit Task"><i class="icon icon-edit"></i></span></button>
+                </div>
+                <div class="pull-left">{{task.Title}}</div>
             </div>
             <hr/>
             <div class="row-fluid">

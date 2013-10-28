@@ -14,7 +14,8 @@ var ScrumSchema = new Schema({
                 AssignedTo: String,
                 Order: Number,
                 Status: {type: String, required: true},
-                Notes: String
+                Notes: String,
+                TicketNumber: String
             }]
         }]
     }]

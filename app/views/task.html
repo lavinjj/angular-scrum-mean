@@ -14,6 +14,14 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label" for="ticketNumber">Ticket # </label>
+
+            <div class="controls">
+                <input rows="3" class="input-large" id="ticketNumber" name="ticketNumber" type="text"
+                          ng-model="task.TicketNumber" />
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label" for="taskPoints">Points </label>
 
             <div class="controls">
@@ -56,7 +64,7 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="taskNotes">Task Title </label>
+            <label class="control-label" for="taskNotes">Notes </label>
 
             <div class="controls">
                 <textarea rows="6" class="input-large" id="taskNotes" name="taskNotes" type="text"
